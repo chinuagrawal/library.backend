@@ -9,10 +9,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // 🔌 Connect to MongoDB (for now using local, we'll later use Atlas)
-mongoose.connect('mongodb+srv://chinmayagrawal:Chinu%402003@cluster0.wy88sf7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGO_URI)
+;
 
 // ✅ API: Get booked seats for a date and shift
 app.get('/api/bookings', async (req, res) => {
